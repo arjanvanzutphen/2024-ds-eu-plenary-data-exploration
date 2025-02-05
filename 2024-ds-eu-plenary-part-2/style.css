@@ -1,0 +1,204 @@
+html,
+body,
+arcgis-map {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+
+arcgis-search {
+    align-self: center;
+}
+
+calcite-shell.custom-theme {
+    --calcite-color-brand: #308e29;
+    --calcite-color-brand-hover: #267121;
+    --calcite-color-brand-press: #1d5519;
+    --calcite-color-background: #faf3e3;
+    --calcite-color-foreground-1: #fffaed;
+    --calcite-color-foreground-2: #fae9c8;
+    --calcite-color-foreground-3: #ece1cd;
+    --calcite-color-foreground-current: #c5b9a1;
+    --calcite-color-info: #267121;
+    --calcite-color-success: #308e29;
+    --calcite-color-warning: #f1c21b;
+    --calcite-color-danger: #d83020;
+    --calcite-color-danger-hover: #a82b1e;
+    --calcite-color-danger-press: #851012;
+    --calcite-color-text-1: #3a3335;
+    --calcite-color-text-2: #3d3638;
+    --calcite-color-text-3: #463d40;
+    --calcite-color-text-inverse: #ffffff;
+    --calcite-color-text-link: #267121;
+    --calcite-color-border-1: #e6ddd1;
+    --calcite-color-border-2: #e8e1dc;
+    --calcite-color-border-3: #e6ddd1;
+    --calcite-color-border-input: #a1a19e;
+}
+
+#map-container {
+    margin: 1rem;
+    width: calc(100% - 2rem);
+    border: 1px solid var(--calcite-color-border-2);
+    border-radius: 8px;
+    box-shadow: var(--calcite-shadow-md);
+}
+
+#reset-fab {
+    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+calcite-menu-item {
+    --calcite-color-foreground-1: var(--calcite-color-background);
+}
+
+calcite-navigation-logo {
+    --calcite-ui-icon-color: var(--calcite-color-brand);
+}
+
+.esri-elevation-profile {
+    --esri-widget-padding: 0;
+    --chart-height: 80px;
+    --width: 200px;
+}
+
+#elevation-panel .esri-elevation-profile {
+    --chart-height: 180px;
+    width: 100%;
+}
+
+#elevation-panel {
+    box-shadow: none;
+    border: none;
+    height: 260px;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    border-top: 1px solid var(--calcite-color-border-3);
+}
+
+#elevation-panel calcite-chip-group {
+    margin-inline-end: .5rem;
+}
+
+calcite-shell-panel[slot="panel-bottom"] {
+    margin-bottom: 1rem;
+}
+
+calcite-sheet {
+    --calcite-sheet-scrim-background: rgb(20, 88, 21, 0.4);
+}
+
+calcite-modal {
+    --calcite-modal-scrim-background: rgb(20, 88, 21, 0.4);
+}
+
+calcite-chip-group {
+    align-self: center;
+}
+
+div[slot="header-actions-end"] {
+    display: flex;
+    align-items: center;
+}
+
+calcite-action[slot="header-actions-start"] {
+    margin-inline-end: 0.5rem;
+    display: flex;
+    align-self: center;
+    height: 100%;
+    border-inline-end: 1px solid var(--calcite-color-border-1);
+}
+
+calcite-chip[slot="header-actions-start"] {
+    align-self: center;
+    height: auto;
+}
+
+#showCodeBtn {
+    margin-inline-end: 1rem;
+}
+
+#nav {
+    --calcite-font-weight-normal: 500;
+}
+
+calcite-action-bar {
+    border-top: 0;
+}
+
+calcite-action-pad[slot="content-end"] {
+    margin: 0 1rem;
+    align-self: center;
+}
+
+calcite-chip[selected] {
+    --calcite-ui-icon-color: var(--calcite-color-brand);
+}
+
+calcite-tile-group {
+    margin: 1rem;
+}
+
+arcgis-search {
+    width: 800px;
+}
+
+arcgis-code-editor {
+    height: 500px;
+  }
+
+.esri-ui-corner .esri-component {
+    box-shadow: none;
+}
+
+calcite-navigation-logo {
+    --calcite-ui-icon-color: var(--calcite-color-text-1);
+}
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.content-container calcite-panel:not(.esri-feature-table__content) {
+    margin: 1rem;
+    height: calc(100% - 2rem);
+    width: calc(100% - 2rem);
+    border-radius: 8px;
+    box-shadow: var(--calcite-shadow-sm);
+}
+
+.content-start {
+    background: var(--calcite-color-background);
+    height: 100%;
+    width: 60%;
+}
+
+.content-end {
+    background: var(--calcite-color-foreground-3);
+    height: 100%;
+    width: 40%;
+}
+
+@media screen and (max-width: 960px) {
+    .content-container {
+        flex-direction: column;
+    }
+
+    .content-start {
+        height: 50%;
+        width: 100%;
+    }
+
+    .content-end {
+        height: 50%;
+        width: 100%;
+    }
+}

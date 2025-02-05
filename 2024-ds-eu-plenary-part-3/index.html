@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>Explore Swiss Hiking</title>
+<script>
+// use the global esriConfig variable to initialize properties
+var esriConfig = {
+  //portalUrl: "https://datapipelines.mapsqa.arcgis.com/"
+  portalUrl: "https://eu.mapsqa.arcgis.com/"
+};
+</script>
+    <!-- Calcite imports -->
+    <script type="module" src="https://js.arcgis.com/calcite-components/2.9.0/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/2.9.0/calcite.css" />
+
+    <!-- ArcGIS Maps SDK for JavaScript imports -->
+    <script src="https://jsdev.arcgis.com/4.31/"></script>
+    <link id="jsapi-mode-light" rel="stylesheet" href="https://jsdev.arcgis.com/4.31/esri/themes/light/main.css" />
+    <link disabled id="jsapi-mode-dark" rel="stylesheet" href="https://jsdev.arcgis.com/4.31/esri/themes/dark/main.css" />
+    <script type="module" src="https://jsdev.arcgis.com/map-components/4.31/arcgis-map-components.esm.js"></script>
+    <script type="module" src="https://jsdev.arcgis.com/coding-components/4.31/arcgis-coding-components.esm.js"></script>
+
+    <link rel="stylesheet" href="./style.css" />
+
+</head>
+
+<body>
+    <calcite-shell class="custom-theme">
+        <calcite-navigation slot="header">
+            <calcite-navigation-logo slot="logo" icon="map" heading="Swiss Hiking"
+                description="Trail Explorer"></calcite-navigation-logo>
+            <arcgis-search id="searchComp" slot="content-center" reference-element="map"
+                style="width: 100%; display: none"></arcgis-search>
+            <calcite-action-pad layout="horizontal" expand-disabled expanded slot="content-end">
+                <calcite-action id="search" icon="search"></calcite-action>
+                <calcite-action id="select-features" text="Draw to select" icon="lasso-select"></calcite-action>
+                <calcite-action id="clear-selection" text="Clear" icon="reset" disabled></calcite-action>
+            </calcite-action-pad>
+        </calcite-navigation>
+        <calcite-sheet id="sheet" display-mode="float" slot="sheets" position="inline-start">
+            <calcite-panel heading="Select a park" closable id="sheet-panel">
+                <calcite-tile-group selection-mode="single" layout="horizontal" selection-appearance="border">
+                    <calcite-tile heading="Jurapark Aargau" description="greatest place on earth" id="jurapark_aargau">
+                        <img style="width: 100%" slot="content-top"
+                            src="https://jsapi.maps.arcgis.com/sharing/rest/content/items/8aef09212ff64b348205e88b9096950a/data"
+                            alt="Jurapark Aargau" />
+                        <calcite-chip-group slot="content-bottom" scale="s">
+                            <calcite-chip scale="s" icon="walking">79 trails</calcite-chip>
+                            <calcite-chip scale="s" icon="biking">Bike paths</calcite-chip>
+                        </calcite-chip-group>
+                    </calcite-tile>
+                    <calcite-tile heading="UNESCO Biosphäre Entlebuch" description="greatest place on earth" id="UNESCO_Biosphäre_Entlebuch">
+                        <img style="width: 100%" slot="content-top"
+                            src="https://jsapi.maps.arcgis.com/sharing/rest/content/items/f3a1f3c920e84ec8a19ba7ebf08cbd5b/data"
+                            alt="UNESCO Biosphäre Entlebuch" />
+                        <calcite-chip-group slot="content-bottom" scale="s">
+                            <calcite-chip scale="s" icon="walking">159 trails</calcite-chip>
+                            <calcite-chip scale="s" icon="biking">Bike paths</calcite-chip>
+                        </calcite-chip-group>
+                    </calcite-tile>
+                    <calcite-tile heading="Landschaftspark Binntal" description="greatest place on earth" id="Landschaftspark_Binntal">
+                        <img style="width: 100%" slot="content-top"
+                            src="https://jsapi.maps.arcgis.com/sharing/rest/content/items/e9f2740c004c41e7a461b626131234af/data"
+                            alt="Landschaftspark Binntal" />
+                        <calcite-chip-group slot="content-bottom" scale="s">
+                            <calcite-chip scale="s" icon="walking">1287 trails</calcite-chip>
+                            <calcite-chip scale="s" icon="biking">Bike paths</calcite-chip>
+                        </calcite-chip-group>
+                    </calcite-tile>
+                    <calcite-tile heading="Naturpark Diemtigtal" description="greatest place on earth" id="Naturpark_Diemtigtal">
+                        <img style="width: 100%" slot="content-top"
+                            src="https://jsapi.maps.arcgis.com/sharing/rest/content/items/4a6facbced4d45259cc4725afca49bbd/data"
+                            alt="Naturpark Diemtigtal" />
+                        <calcite-chip-group slot="content-bottom" scale="s">
+                            <calcite-chip scale="s" icon="walking">Hiking trails</calcite-chip>
+                            <calcite-chip scale="s" icon="biking">Bike paths</calcite-chip>
+                        </calcite-chip-group>
+                    </calcite-tile>
+                    <calcite-tile heading="Naturpark Gantrisch" description="greatest place on earth" id="Naturpark_Gantrisch">
+                        <img style="width: 100%" slot="content-top"
+                            src="https://jsapi.maps.arcgis.com/sharing/rest/content/items/f94eee0770e34cc8af7cd6e0318e3289/data"
+                            alt="Naturpark Gantrisch" />
+                        <calcite-chip-group slot="content-bottom" scale="s">
+                            <calcite-chip scale="s" icon="walking">395 trails</calcite-chip>
+                            <calcite-chip scale="s" icon="biking">Bike paths</calcite-chip>
+                        </calcite-chip-group>
+                    </calcite-tile>
+                    <calcite-tile heading="Naturpark Beverin" description="greatest place on earth" id="Naturpark_Beverin">
+                        <img style="width: 100%" slot="content-top"
+                            src="https://jsapi.maps.arcgis.com/sharing/rest/content/items/18cbf63c4b554c0192dae7208af25028/data"
+                            alt="Naturpark Beverin" />
+                        <calcite-chip-group slot="content-bottom" scale="s">
+                            <calcite-chip scale="s" icon="walking">2016 trails</calcite-chip>
+                            <calcite-chip scale="s" icon="biking">Bike paths</calcite-chip>
+                        </calcite-chip-group>
+                    </calcite-tile>
+                </calcite-tile-group>
+
+            </calcite-panel>
+        </calcite-sheet>
+        <div class="content-container">
+            <div class="content-start">
+                <calcite-panel id="map-container">
+
+                    <!--arcgis-map ground="world-elevation" item-id="059772cb6dc44c6c9e9ff32733e50afa" id="map" -->
+                    <arcgis-map ground="world-elevation" item-id="100dc0bd56ad4e239b8244d95b504c3b" id="map"
+                        padding="{bottom: 500}">
+                        <arcgis-placement position="top-left">
+                            <div id="reset-fab">
+                                <calcite-fab icon="hamburger" scale="l" appearance="outline-fill" text="Featured Parks"
+                                    text-enabled id="park-chip" scale="l"></calcite-fab>
+                                <calcite-fab icon="x" text="Reset" hidden id="reset-btn"></calcite-fab>
+                            </div>
+                        </arcgis-placement>
+                        <arcgis-placement position="bottom-right">
+                            <calcite-fab id="showCodeBtn" appearance="outline-fill" icon="code"></calcite-fab>
+                        </arcgis-placement>
+                    </arcgis-map>
+
+                </calcite-panel>
+            </div>
+            <div class="content-end">
+                <calcite-panel>
+                    <div id="table"></div>
+                </calcite-panel>
+            </div>
+        </div>
+    </calcite-shell>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
